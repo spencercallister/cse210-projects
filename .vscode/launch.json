@@ -15,6 +15,30 @@
             "stopAtEntry": false
         },
         {
+            "name": "functions_practice Project",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-functions_practice",
+            "program": "${workspaceFolder}/sandbox/functions_practice/bin/Debug/net8.0/functions_practice.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/functions_practice",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+        {
+            "name": "lists_practice Project",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-lists_practice",
+            "program": "${workspaceFolder}/sandbox/lists_practice/bin/Debug/net8.0/lists_practice.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/lists_practice",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+        {
             "name": "one_to_ten Project",
             "type": "coreclr",
             "request": "launch",
