@@ -15,24 +15,22 @@ class Query
 
         List<string[]> results = [];
 
-        using (var connection = new SqliteConnection(connectionString))
+        using (SqliteConnection connection = new(connectionString))
         {
             connection.Open();
 
-            var command = connection.CreateCommand();
+            SqliteCommand command = connection.CreateCommand();
             command.CommandText = query;
-            
-            using (var reader = command.ExecuteReader())
+
+            using SqliteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                while (reader.Read())
+                string[] row = new string[reader.FieldCount];
+                for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    string[] row = new string[reader.FieldCount];
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        row[i] = reader[i].ToString();
-                    }
-                    results.Add(row);
+                    row[i] = reader[i].ToString();
                 }
+                results.Add(row);
             }
         }
         return results;
@@ -42,11 +40,11 @@ class Query
     {
         
         List<string[]> allResults = RunQuery(query);
-        List<string> menuItems = new();
+        List<string> menuItems = [];
 
-        foreach (var row in allResults) menuItems.Add(row[0]);
+        foreach (string[] row in allResults) menuItems.Add(row[0]);
 
-        ConsoleMenu menu = new ConsoleMenu(menuItems);
+        ConsoleMenu menu = new(menuItems);
         string selection = menu.DisplayMenu();
 
         return selection;
