@@ -4,28 +4,26 @@ class Entry
     public string _prompt;
     public string _entry;
 
-    public string SelectPrompt()
+    List<string> _prompts = [
+        "Who was the most interesting person I interacted with today?", 
+        "What was the best part of my day?", 
+        "How did I see the hand of the Lord in my life today?", 
+        "What was the strongest emotion I felt today?",
+        "If I had one thing I could do over today, what would it be?"
+    ];
+
+    public void SelectPrompt(List<Entry> entries)
     {
         Random random = new();
-        List<string> prompts = ["prompt1", "prompt2", "prompt3", "prompt4"];
 
-        int promptIndex = random.Next(prompts.Count);
-        string prompt = prompts[promptIndex];
-        return prompt;
-    }
-
-    public void WriteEntry(Journal currentJournal)
-    {
-
-        this._prompt = SelectPrompt();
-
-        Console.WriteLine(this._prompt);
-        this._entry = Console.ReadLine();
-
-        DateTime currentDateTime = DateTime.Now;
-        this._date = currentDateTime.ToShortDateString();
-
-        currentJournal._entries.Add(this);
-
+        int promptIndex;
+        if (entries.Count > 4) {
+            promptIndex = random.Next(_prompts.Count);
+        }
+        else
+        {
+            do  promptIndex = random.Next(_prompts.Count); while (entries.Any(entry => entry._prompt == _prompts[promptIndex]));
+        }
+        _prompt = _prompts[promptIndex];
     }
 }
