@@ -1,0 +1,44 @@
++---------------------+
+|      Contractor     |  
++---------------------+
+| +Name: string       |
+| +Rating: double     |
+| +ContactInfo: string|
+| +Location: string   |
++---------------------+
+| +GetDetails(): void |
++---------------------+
+            ^
+            |
+  +---------+---------+------------------+
+  |                   |                  |
++--------+        +---------+        +---------+
+| Plumber |       | Electrician |    | Builder  |
++--------+        +---------+        +---------+
+| +SearchPlumbers(location: string): List<Plumber>  |
+| +SearchElectricians(location: string): List<Electrician>|
+| +SearchBuilders(location: string): List<Builder> |
++------------------+-----------------+-----------+
+
++--------------------------+
+| GooglePlacesService      |
++--------------------------+
+| +SearchContractors(type: string, location: string): List<Contractor> |
++--------------------------+
+
++------------------------------------+
+| RecommendationEngine               |
++------------------------------------+
+| +FilterByRating(minRating: double): List<Contractor> |
+| +RecommendContractors(): List<Contractor>           |
++------------------------------------+
+
++---------------------+
+|       User          |
++---------------------+
+| +Name: string       |
+| +ProjectType: string|
+| +Budget: double     |
++---------------------+
+| +RequestRecommendations(): void |
++---------------------+

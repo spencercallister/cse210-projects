@@ -2,8 +2,9 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        ContractorRequest contractor = new();
+        await contractor.GetPlace();
     }
 }
